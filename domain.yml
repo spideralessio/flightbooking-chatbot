@@ -1,0 +1,64 @@
+actions:
+- utter_ask_from
+- utter_ask_to
+- utter_ask_time
+- utter_goodbye
+- utter_greet
+- utter_not_found
+- utter_slots_values
+- utter_submit
+- utter_sorry
+entities:
+- from
+- to
+- time
+forms:
+- flight_booking_form
+intents:
+- inform
+- greet: 
+    triggers: utter_greet
+- affirm
+- goodbye
+- deny:
+    triggers: utter_sorry
+- close
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 60
+slots:
+  from:
+    type: unfeaturized
+  requested_slot:
+    type: unfeaturized
+  to:
+    type: unfeaturized
+  time:
+    type: unfeaturized
+templates:
+  utter_ask_from:
+  - text: From where do you want to take it?
+  - text: From where?
+  - text: From where do you leave?
+  utter_ask_to:
+  - text: Where do you want to go?
+  - text: To which destination?
+  utter_ask_time:
+  - text: When do you need it?
+  - text: For what date?
+  utter_goodbye:
+  - text: Bye!
+  utter_greet:
+  - text: Hey! I am a flight booking assistant, how can I help you?
+  utter_not_found:
+  - text: Flight not found for this date, please tell me another date!
+  utter_slots_values:
+  - text: "All done! I've just booked the following flight:\n -\
+      \ from: {from}\n - to: {to}\n - time: {time}.\nSee you next time!"
+  utter_sorry:
+  - text: "Sorry for not being very helpful. See you next time!"
+  utter_submit:
+  - text: "Perfect! I am going to book a flight search using the following parameters:\n -\
+      \ from: {from}\n - to: {to}\n - time: {time}. Is it correct?"
+  utter_default:
+    - text: "Sorry, I didn't understand you..."
